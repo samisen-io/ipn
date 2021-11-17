@@ -1,35 +1,47 @@
 <template>
   <div class="container">
     <div v-for="value in data" :key="value">
-      <h1 class="mainHeading">EditArticle</h1>
+      <h1 class="mainHeading">Edit Article</h1>
       <div class="titleLabel">
-        <label for="Title">Title :</label>
-        <input type="text" id="Title" v-model="value.title" />
+        <label for="Title" class="form-label">Title:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="Title"
+          placeholder="Title For An News Article"
+          v-model="value.title"
+        />
       </div>
       <div>
-        <h1>geolocation</h1>
-        <p>
-          longitude:{{ coordinates.longitude }},latitude{{
-            coordinates.latitude
-          }}
-        </p>
-        <label for="Location">Location :</label>
-        <input type="text" id="Location" v-model="value.Location" />
+        <div class="titleLabel">
+          <label for="Location" class="form-label">Location:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Location"
+            placeholder="Location"
+            v-model="value.Location"
+          />
+        </div>
       </div>
-      <div class="photosdiv">
-        <h3>Upload u r Images and videos</h3>
 
-        <label for="files">Select multiple files: </label>
-        <input id="files" type="file" multiple />
-        <output id="result" />
-      </div>
-      <div>
-        <h1>ArticleTest</h1>
-        <textarea class="articleBox" v-model="value.ArticleText"> </textarea>
+      <h3>Upload u r Images and videos</h3>
+      <input id="files" type="file" multiple />
+      <output id="result" />
+
+      <div class="form-floating">
+        <h1 class="headingForAnArticle">ArticleText</h1>
+        <textarea
+          class="form-control"
+          placeholder="Leave a comment here"
+          id="floatingTextarea2"
+          style="height: 400px"
+          v-model="value.ArticleText"
+        ></textarea>
       </div>
       <div class="divforbuttons">
-        <button type="button">Save</button>
-        <button type="button" class="buttonforPublish">Publish</button>
+        <button type="button" class="btn btn-primary">Publish</button>&nbsp;
+        <button type="button" class="btn btn-success">Save</button>
       </div>
     </div>
   </div>
@@ -42,6 +54,8 @@ window.onload = function () {
     filesInput.addEventListener("change", function (event) {
       var files = event.target.files;
       var output = document.getElementById("result");
+      var div = document.createElement("div").classList.add("thumbnail");
+    
       for (var i = 0; i < files.length; i++) {
         var file = files[i];
 
@@ -49,41 +63,50 @@ window.onload = function () {
           var picReader = new FileReader();
           picReader.addEventListener("load", function (event) {
             var picFile = event.target;
-            var div = document.createElement("div");
-            div.innerHTML =
-              "<img class='thumbnail' src='" +
+            if (div.innerHTML == undefined) {
+              div.innerHTML = 
+              "<img  src='" +
               picFile.result +
               "'" +
               "title='" +
               picFile.name +
               "'/>";
-
-            output.insertBefore(div, null);
+            } else {
+                div.innerHTML = div.innerHTML +
+              "<img  src='" +
+              picFile.result +
+              "'" +
+              "title='" +
+              picFile.name +
+              "'/>";
+            }
+            
           });
-
+          // output.insertBefore(div, null);
           picReader.readAsDataURL(file);
         } else if (file.type.match("video")) {
-          let reader = new FileReader();
-          reader.readAsArrayBuffer(file);
-          reader.onload = function (e) {
-            let buffer = e.target.result;
-            let videoBlob = new Blob([new Uint8Array(buffer)], {
-              type: "video/mp4",
-            });
-            let url = window.URL.createObjectURL(videoBlob);
+          // let reader = new FileReader();
+          // reader.readAsArrayBuffer(file);
+          // reader.onload = function (e) {
+          //   let buffer = e.target.result;
+          //   let videoBlob = new Blob([new Uint8Array(buffer)], {
+          //     type: "video/mp4",
+          //   });
+          //   let url = window.URL.createObjectURL(videoBlob);
 
-            var div = document.createElement("div");
-            div.innerHTML =
-              "<video class='thumbnail' controls>'" +
-              "<source src='" +
-              url +
-              "'" +
-              " type='video/mp4'>'" +
-              "</video>";
-            output.insertBefore(div, null);
-          };
-          picReader.readAsDataURL(file);
+          //   var div = document.createElement("div");
+          //   div.innerHTML =
+          //     "<video class='thumbnail' controls>'" +
+          //     "<source src='" +
+          //     url +
+          //     "'" +
+          //     " type='video/mp4'>'" +
+          //     "</video>";
+          //   output.insertBefore(div, null);
+          // };
+          // picReader.readAsDataURL(file);
         }
+        output.appendChild(div);
       }
     });
   } else {
@@ -92,12 +115,14 @@ window.onload = function () {
 };
 
 export default {
+  created() {
+    this.$getLocation({}).then((coordinates) => {
+      this.coordinates = coordinates;
+      console.log(coordinates);
+    });
+  },
   data() {
     return {
-      coordinates: {
-        longitude: 0,
-        latitude: 0,
-      },
       data: [
         {
           image: "",
@@ -113,28 +138,23 @@ export default {
 </script>
 
 <style>
+.headingForAnArticle {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
 .mainHeading {
-  font-family: "Lucida Console", "Courier New", monospace;
+  display: block;
 }
 .titleLabel {
   margin-bottom: 30px;
 }
-.articleBox {
-  height: 350px;
-  width: 700px;
+.divforbuttons{
+  text-align: right;
 }
-.buttonforPublish {
-  margin-top: 20px;
-  background-color: green;
-}
-.divforbuttons {
-  text-align: center;
-}
-
 .thumbnail {
   padding: 10px;
-  max-width: 25%;
-  max-height: 350px;
-  display: inline-block;
+  max-width: 35%;
+  max-height: 450px;
 }
 </style>
