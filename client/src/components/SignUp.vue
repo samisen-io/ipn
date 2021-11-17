@@ -91,7 +91,7 @@
             </div>
 
             <div class="Login">
-              <button type="button" class="btn btn-primary">Login</button>
+              <button type="button" class="btn btn-primary">SignUp</button>
             </div>
           </form>
         </div>
