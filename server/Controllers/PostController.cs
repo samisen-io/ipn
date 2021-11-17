@@ -7,28 +7,28 @@ using server.Services;
 namespace server.Controllers;
 [ApiController]
 [Route("[controller]")]
-public class UserController : ControllerBase
+public class PostController : ControllerBase
 {
 
-  private readonly ILogger<UserController> _logger;
-  private readonly IUserService _userDBService;
+  private readonly ILogger<PostController> _logger;
+  private readonly IPostService _PostDBService;
 
-  public UserController(ILogger<UserController> logger, IUserService userService)
+  public PostController(ILogger<PostController> logger, IPostService postService)
   {
-    _userDBService = userService;
+    _PostDBService = postService;
     _logger = logger;
   }
 
   [HttpGet]
-  public async Task<IEnumerable<User>> Get()
+  public async Task<IEnumerable<Post>> Get()
   {
-    return await _userDBService.FindAll();
+    return await _PostDBService.FindAll();
   }
 
-  [HttpGet("{id}", Name = "FindUser")]
-  public async Task<ActionResult<User>> Get(int id)
+  [HttpGet("{id}", Name = "FindPost")]
+  public async Task<ActionResult<Post>> Get(int id)
   {
-    var result = await _userDBService.FindOne(id);
+    var result = await _PostDBService.FindOne(id);
     if (result != default)
       return Ok(result);
     else
@@ -36,14 +36,14 @@ public class UserController : ControllerBase
   }
 
   [HttpPost]
-  public async Task<ActionResult<User>> Insert(User dto)
+  public async Task<ActionResult<Post>> Insert(Post dto)
   {
     if (dto.id <= 0)
     {
       return BadRequest("Id cannot be set for insert action.");
     }
 
-    var id = await _userDBService.Insert(dto);
+    var id = await _PostDBService.Insert(dto);
     if (id != default)
       return CreatedAtRoute("FindOne", new { id = id }, dto);
     else
@@ -51,14 +51,14 @@ public class UserController : ControllerBase
   }
 
   [HttpPut]
-  public async Task<ActionResult<User>> Update(User dto)
+  public async Task<ActionResult<Post>> Update(Post dto)
   {
     if (dto.id <= 0)
     {
       return BadRequest("Id should be set for insert action.");
     }
 
-    var result = await _userDBService.Update(dto);
+    var result = await _PostDBService.Update(dto);
     if (result > 0)
       return NoContent();
     else
@@ -66,9 +66,9 @@ public class UserController : ControllerBase
   }
 
   [HttpDelete("{id}")]
-  public async Task<ActionResult<User>> Delete(int id)
+  public async Task<ActionResult<Post>> Delete(int id)
   {
-    var result = await _userDBService.Delete(id);
+    var result = await _PostDBService.Delete(id);
     if (result > 0)
       return NoContent();
     else

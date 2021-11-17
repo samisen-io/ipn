@@ -1,6 +1,6 @@
 namespace server.Models;
 
-public class post_meta
+public class PostMeta
 {
   public long id { get; set; }
   public long postId { get; set; }

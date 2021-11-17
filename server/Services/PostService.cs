@@ -4,11 +4,11 @@ using server.Models;
 
 namespace server.Services
 {
-  public sealed class UserService : IUserService
+  public sealed class PostService : IPostService
   {
     private readonly AppDBContext _dbContext;
 
-    public UserService(AppDBContext dbContext)
+    public PostService(AppDBContext dbContext)
     {
       _dbContext = dbContext;
     }
@@ -17,8 +17,8 @@ namespace server.Services
     {
       try
       {
-        _dbContext.Users.Remove(
-            new User
+        _dbContext.Posts.Remove(
+            new Post
             {
               id = id
             }
@@ -32,23 +32,23 @@ namespace server.Services
       }
     }
 
-    public async Task<IEnumerable<User>> FindAll()
+    public async Task<IEnumerable<Post>> FindAll()
     {
-      return await _dbContext.Users.ToListAsync();
+      return await _dbContext.Posts.ToListAsync();
     }
 
-    public async Task<User> FindOne(int id)
+    public async Task<Post> FindOne(int id)
     {
-      return await _dbContext.Users.FirstOrDefaultAsync(x => x.id == id);
+      return await _dbContext.Posts.FirstOrDefaultAsync(x => x.id == id);
     }
 
-    public async Task<int> Insert(User forecast)
+    public async Task<int> Insert(Post forecast)
     {
       _dbContext.Add(forecast);
       return await _dbContext.SaveChangesAsync();
     }
 
-    public async Task<int> Update(User forecast)
+    public async Task<int> Update(Post forecast)
     {
       try
       {

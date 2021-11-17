@@ -1,6 +1,6 @@
 namespace server.Models;
 
-public class post
+public class Post
 {
   public long id { get; set; }
   public long authorId { get; set; }

@@ -17,8 +17,9 @@ IConfiguration Configuration = new ConfigurationBuilder()
 
 builder.Services.AddSingleton<IConfiguration>(Configuration);
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IPostService, PostService>();
 
-builder.Services.AddDbContextPool<UserDBContext>(options => options
+builder.Services.AddDbContextPool<AppDBContext>(options => options
       .UseMySql(Configuration.GetConnectionString("DefaultConnection"),
           ServerVersion.Create(new Version(10, 5, 4), ServerType.MariaDb))
   );
