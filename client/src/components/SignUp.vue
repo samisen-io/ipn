@@ -98,7 +98,7 @@
 
         <div class="mt-4">
           <div class="d-flex justify-content-center">
-            Already accont? <a href="#" class="ml-2">Sign</a>
+            Already accont? <a href="/" class="ml-2">Sign</a>
           </div>
         </div>
       </div>

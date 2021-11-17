@@ -119,7 +119,7 @@
             <button type="button" class="btn btn-success">View</button>
           </td>
           <td v-else>
-            <button type="button" class="btn btn-info">Edit</button>
+            <button type="button" class="btn btn-info" @click="goToEditPage()">Edit</button>
           </td>
         </tr>
       </tbody>
@@ -128,7 +128,13 @@
 </template>
 
 <script>
+import router from "../router"
 export default {
+  methods:{
+    goToEditPage(){
+       router.push('EditArticle')
+    }
+  },
   data() {
     return {
       data: [

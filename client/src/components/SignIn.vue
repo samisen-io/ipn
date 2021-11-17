@@ -40,14 +40,14 @@
             </div>
 
             <div class="Login">
-              <button type="button" class="btn btn-primary">Login</button>
+              <button type="button" class="btn btn-primary" @click="goToCreateArticle()">Login</button>
             </div>
           </form>
         </div>
 
         <div class="mt-4">
           <div class="d-flex justify-content-center">
-            Don't have an account? <a href="#" class="ml-2">Sign Up</a>
+            Don't have an account? <a href="/SignUp" class="ml-2">Sign Up</a>
           </div>
           <div class="Forgotpassword">
             <a href="#">Forgot your password?</a>
@@ -59,7 +59,14 @@
 </template>
 
 <script>
-export default {};
+import router from "../router"
+export default {
+  methods:{
+    goToCreateArticle(){
+       router.push('CreateArticles')
+    }
+  }
+};
 </script>
 
 <style>
@@ -77,8 +84,8 @@ margin-top: 10px;
 .user_card {
   height: 500px;
   width: 450px;
-  margin-top: auto;
-  margin-bottom: auto;
+ 
+  margin-bottom: 50px;
   position: relative;
   display: flex;
   justify-content: center;
