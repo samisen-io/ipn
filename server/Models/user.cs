@@ -1,8 +1,8 @@
 namespace server.Models;
 
-public class user
+public class User
 {
-  public long id { get; set; }
+  public long? id { get; set; }
   public string firstName { get; set; }
   public string middleName { get; set; }
   public string lastName { get; set; }

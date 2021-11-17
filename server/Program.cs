@@ -1,4 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using server.DataContext;
+using server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,11 +16,12 @@ IConfiguration Configuration = new ConfigurationBuilder()
    .Build();
 
 builder.Services.AddSingleton<IConfiguration>(Configuration);
-builder.Services.AddDbContext<Server.DataContext.AppContext>(options =>
-                       options.UseSqlServer(
-                           Configuration.GetConnectionString("DefaultConnection")));
-//Register dapper in scope    
-builder.Services.AddScoped<global::Server.Services.IDapper, global::Server.Services.Dapper>();
+builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddDbContextPool<UserDBContext>(options => options
+      .UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+          ServerVersion.Create(new Version(10, 5, 4), ServerType.MariaDb))
+  );
 
 var app = builder.Build();
 
