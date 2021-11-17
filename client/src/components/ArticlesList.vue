@@ -38,7 +38,7 @@
               <form v-on:submit.prevent autocomplete="off">
                 <div class="container">
                   <div class="input-group mb-3">
-                    <span class="input-group-text">Article Name</span>
+                    <span class="input-group-text" style="width:30%">Article Name</span>
                     <input
                       type="text"
                       class="form-control"
@@ -50,7 +50,7 @@
                   </div>
 
                   <div class="input-group mb-3">
-                    <span class="input-group-text">Date</span>
+                    <span style="width:30%" class="input-group-text">Date</span>
                     <input
                       type="Date"
                       class="form-control"
@@ -61,7 +61,7 @@
                   </div>
 
                   <div class="input-group mb-3">
-                    <span class="input-group-text">Place</span>
+                    <span style="width:30%" class="input-group-text">Place</span>
                     <input
                       type="text"
                       class="form-control"

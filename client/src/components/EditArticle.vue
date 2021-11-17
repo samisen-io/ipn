@@ -27,12 +27,32 @@
         </div>
       </div>
 
-      <div class="inline">
+     
+
+      <div class="thumbnail">
         <h3>Upload u r Images and videos</h3>
         <input id="files" type="file" multiple />
         <output id="result" />
       </div>
 
+      
+      <br />
+      <!-- <div class="d-inline p-2">
+        <img src="../assets/logo.png" />
+      </div>
+      <div class="d-inline">
+        <img src="../assets/logo.png" />
+      </div>
+      <div class="d-inline">
+        <img src="../assets/logo.png" />
+      </div>
+      <div class="d-inline">
+        <img src="../assets/logo.png" />
+      </div>
+      <div class="d-inline">
+        <img src="../assets/logo.png" />
+      </div> -->
+      
       <div class="form-floating">
         <h1 class="headingForAnArticle">ArticleText</h1>
         <textarea
@@ -60,14 +80,13 @@ window.onload = function () {
       var output = document.getElementById("result");
       for (var i = 0; i < files.length; i++) {
         var file = files[i];
-
         if (file.type.match("image")) {
           var picReader = new FileReader();
           picReader.addEventListener("load", function (event) {
             var picFile = event.target;
             var div = document.createElement("div");
             div.innerHTML =
-              "<img class='thumbnail' src='" +
+              "<img  src='" +
               picFile.result +
               "'" +
               "title='" +
@@ -137,17 +156,16 @@ export default {
   text-align: right;
 }
 .headingForAnArticle {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   color: black;
   margin-top: 30px;
   margin-bottom: 20px;
   text-align: center;
 }
 .mainHeading {
-   margin-top: 5px;
+  margin-top: 5px;
   margin-bottom: 20px;
   text-align: center;
- 
 }
 .titleLabel {
   margin-bottom: 30px;
@@ -161,12 +179,11 @@ export default {
   display: table;
   padding: 10px;
   max-width: 55%;
-  max-height: 450px;
-  display: inline-block;
+  max-height: 50%;
 }
 .inline {
-   margin-top: 15px;
-   margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 20px;
   display: inline-block;
 }
 </style>

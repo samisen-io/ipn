@@ -14,7 +14,7 @@
           </div>
         </div>
         <div>
-          <h3 class="heading">Welcome to IPN</h3>
+          <h3 class="heading">Welcome to IPN To Login</h3>
           <form>
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fas fa-user"></i></span>

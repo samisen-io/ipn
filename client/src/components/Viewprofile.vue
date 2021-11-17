@@ -1,11 +1,10 @@
 <template>
   <div class="container">
     <h1 class="profileHeading">ProfileDetails</h1>
-
-    <div class="border">
-      <div class="buttonForEdit">
-        <button type="button" class="btn btn-info">Edit</button>
-      </div>
+    <div class="buttonForEdit">
+      <button type="button" class="btn btn-info">Edit</button>
+    </div>
+    <div class="viewProfilecard">
       <div class="row">
         <div class="col">
           <img src="../assets/user.png" class="img" alt="UserLogo" />
@@ -16,7 +15,9 @@
           <br />
           <br />
           <div class="input-group mb-3">
-            <span class="input-group-text" style="width:20%" id="basic-addon1">Name</span>
+            <span class="input-group-text" style="width: 20%" id="basic-addon1"
+              >Name</span
+            >
             <input
               type="text"
               class="form-control"
@@ -27,7 +28,9 @@
             />
           </div>
           <div class="input-group mb-3">
-            <span class="input-group-text" style="width:20%" id="basic-addon1">Location</span>
+            <span class="input-group-text" style="width: 20%" id="basic-addon1"
+              >Location</span
+            >
             <input
               type="text"
               class="form-control"
@@ -39,7 +42,9 @@
           </div>
 
           <div class="input-group mb-3">
-            <span class="input-group-text" style="width:20%" id="basic-addon1">DateOfBirth</span>
+            <span class="input-group-text" style="width: 20%" id="basic-addon1"
+              >DateOfBirth</span
+            >
             <input
               type="date"
               class="form-control"
@@ -49,10 +54,11 @@
             />
           </div>
           <div class="input-group mb-3">
-            <span class="input-group-text" style="width:20%" id="InputTag">MobileNumber</span>
+            <span class="input-group-text" style="width: 20%" id="InputTag"
+              >MobileNumber</span
+            >
             <input
               type="number"
-              
               class="form-control"
               placeholder="MobileNumber"
               aria-label="MobileNumber"
@@ -68,18 +74,21 @@
 
 <script>
 export default {
-  data(){
-    return{
-      data:{
-        Name:"Venkat",Location:"Chirala",DateOfBirth:"1997-08-26",MobileNumber:"9398385910"
-      }
-    }
-  }
+  data() {
+    return {
+      data: {
+        Name: "Venkat",
+        Location: "Chirala",
+        DateOfBirth: "1997-08-26",
+        MobileNumber: "9398385910",
+      },
+    };
+  },
 };
 </script>
 
 <style>
-.InputTag{
+.InputTag {
   width: 100%;
 }
 .forForm {
@@ -105,5 +114,24 @@ export default {
 }
 .deatils {
   margin-bottom: 20px;
+}
+
+.viewProfilecard {
+  border: 3px solid red;
+  border-radius: 25px;
+  height: 500px;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 </style>
