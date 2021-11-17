@@ -2,32 +2,36 @@
   <div class="container">
     <div v-for="value in data" :key="value">
       <h1 class="mainHeading">Edit Article</h1>
-      <div class="titleLabel">
-        <label for="Title" class="form-label">Title:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="Title"
-          placeholder="Title For An News Article"
-          v-model="value.title"
-        />
-      </div>
-      <div>
-        <div class="titleLabel">
-          <label for="Location" class="form-label">Location:</label>
+
+      <div class="mb-4 row">
+        <label for="staticEmail" class="col-sm-1 col-form-label">Title:</label>
+        <div class="col-sm-3">
           <input
             type="text"
             class="form-control"
-            id="Location"
+            placeholder="Title For An News Article"
+          />
+        </div>
+      </div>
+
+      <div class="mb-2 row">
+        <label for="Location" class="col-sm-1 col-form-label">Location:</label>
+        <div class="col-sm-3">
+          <input
+            disabled
+            type="text"
+            class="form-control"
             placeholder="Location"
             v-model="value.Location"
           />
         </div>
       </div>
 
-      <h3>Upload u r Images and videos</h3>
-      <input id="files" type="file" multiple />
-      <output id="result" />
+      <div class="inline">
+        <h3>Upload u r Images and videos</h3>
+        <input id="files" type="file" multiple />
+        <output id="result" />
+      </div>
 
       <div class="form-floating">
         <h1 class="headingForAnArticle">ArticleText</h1>
@@ -54,8 +58,6 @@ window.onload = function () {
     filesInput.addEventListener("change", function (event) {
       var files = event.target.files;
       var output = document.getElementById("result");
-      var div = document.createElement("div").classList.add("thumbnail");
-    
       for (var i = 0; i < files.length; i++) {
         var file = files[i];
 
@@ -63,50 +65,41 @@ window.onload = function () {
           var picReader = new FileReader();
           picReader.addEventListener("load", function (event) {
             var picFile = event.target;
-            if (div.innerHTML == undefined) {
-              div.innerHTML = 
-              "<img  src='" +
+            var div = document.createElement("div");
+            div.innerHTML =
+              "<img class='thumbnail' src='" +
               picFile.result +
               "'" +
               "title='" +
               picFile.name +
               "'/>";
-            } else {
-                div.innerHTML = div.innerHTML +
-              "<img  src='" +
-              picFile.result +
-              "'" +
-              "title='" +
-              picFile.name +
-              "'/>";
-            }
-            
+
+            output.insertBefore(div, null);
           });
-          // output.insertBefore(div, null);
+
           picReader.readAsDataURL(file);
         } else if (file.type.match("video")) {
-          // let reader = new FileReader();
-          // reader.readAsArrayBuffer(file);
-          // reader.onload = function (e) {
-          //   let buffer = e.target.result;
-          //   let videoBlob = new Blob([new Uint8Array(buffer)], {
-          //     type: "video/mp4",
-          //   });
-          //   let url = window.URL.createObjectURL(videoBlob);
+          let reader = new FileReader();
+          reader.readAsArrayBuffer(file);
+          reader.onload = function (e) {
+            let buffer = e.target.result;
+            let videoBlob = new Blob([new Uint8Array(buffer)], {
+              type: "video/mp4",
+            });
+            let url = window.URL.createObjectURL(videoBlob);
 
-          //   var div = document.createElement("div");
-          //   div.innerHTML =
-          //     "<video class='thumbnail' controls>'" +
-          //     "<source src='" +
-          //     url +
-          //     "'" +
-          //     " type='video/mp4'>'" +
-          //     "</video>";
-          //   output.insertBefore(div, null);
-          // };
-          // picReader.readAsDataURL(file);
+            var div = document.createElement("div");
+            div.innerHTML =
+              "<video class='thumbnail' controls>'" +
+              "<source src='" +
+              url +
+              "'" +
+              " type='video/mp4'>'" +
+              "</video>";
+            output.insertBefore(div, null);
+          };
+          picReader.readAsDataURL(file);
         }
-        output.appendChild(div);
       }
     });
   } else {
@@ -138,23 +131,42 @@ export default {
 </script>
 
 <style>
+.divforbuttons {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  text-align: right;
+}
 .headingForAnArticle {
+  font-family: 'Times New Roman', Times, serif;
+  color: black;
   margin-top: 30px;
   margin-bottom: 20px;
   text-align: center;
 }
 .mainHeading {
-  display: block;
+   margin-top: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+ 
 }
 .titleLabel {
   margin-bottom: 30px;
+
+  float: left;
 }
-.divforbuttons{
-  text-align: right;
-}
+
 .thumbnail {
+  content: "";
+  clear: both;
+  display: table;
   padding: 10px;
-  max-width: 35%;
+  max-width: 55%;
   max-height: 450px;
+  display: inline-block;
+}
+.inline {
+   margin-top: 15px;
+   margin-bottom: 20px;
+  display: inline-block;
 }
 </style>
