@@ -3,6 +3,8 @@ import SignIn from "../components/SignIn.vue"
 import SignUp from "../components/SignUp.vue"
 import CreateArticles from "../components/CreateArticles.vue"
 import EditArticle from "../components/EditArticle.vue"
+import NewsFeed from "../components/NewsFeed.vue"
+
 const routes = [
     {
         path: "/",
@@ -26,6 +28,11 @@ const routes = [
         path: "/editArticle",
         name: "EditArticle",
         component: EditArticle,
+    },
+    {
+        path:"/NewsFeed",
+        name:"NewsFeed",
+        component:NewsFeed
     }
 
 ];
