@@ -27,32 +27,12 @@
         </div>
       </div>
 
-     
-
       <div class="thumbnail">
         <h3>Upload u r Images and videos</h3>
         <input id="files" type="file" multiple />
         <output id="result" />
       </div>
-
-      
       <br />
-      <!-- <div class="d-inline p-2">
-        <img src="../assets/logo.png" />
-      </div>
-      <div class="d-inline">
-        <img src="../assets/logo.png" />
-      </div>
-      <div class="d-inline">
-        <img src="../assets/logo.png" />
-      </div>
-      <div class="d-inline">
-        <img src="../assets/logo.png" />
-      </div>
-      <div class="d-inline">
-        <img src="../assets/logo.png" />
-      </div> -->
-      
       <div class="form-floating">
         <h1 class="headingForAnArticle">ArticleText</h1>
         <textarea
@@ -65,13 +45,20 @@
       </div>
       <div class="divforbuttons">
         <button type="button" class="btn btn-primary">Publish</button>&nbsp;
-        <button type="button" class="btn btn-success">Save</button>
+        <button
+          type="button"
+          class="btn btn-success"
+          @click="goToCreateArticlePage()"
+        >
+          Save
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import router from "../router";
 window.onload = function () {
   if (window.File && window.FileList && window.FileReader) {
     var filesInput = document.getElementById("files");
@@ -145,6 +132,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    goToCreateArticlePage() {
+      router.push("CreateArticles");
+    },
   },
 };
 </script>
