@@ -1,26 +1,14 @@
 <template>
-  <div class="container h-100">
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <div class="d-flex justify-content-center h-100">
+  <div class="container">
+    <img src="../assets/IPNLogo.png" class="logo" alt="Logo" />
+    <div class="d-flex justify-content-center">
       <div class="card">
-        <div class="d-flex justify-content-center">
-          <div class="brand_logo_container">
-            <img src="../assets/user.png" class="brand_logo" alt="Logo" />
-          </div>
-        </div>
-        <br />
-         <br />
-        <div class="details">
-          <h3 class="heading"> Regiester An Account</h3>
-        
+        <div>
+          <h3 class="heading">Register An Account To Login To IPN</h3><br />
+          
           <form>
             <div class="input-group mb-3">
-              <span class="input-group-text"><i class="fas fa-user"></i></span>
+              <span class="input-group-text"><i class="fas fa-user fa-2x"></i></span>
               <input
                 type="email"
                 class="form-control"
@@ -31,7 +19,7 @@
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text"><i class="fas fa-key"></i></span>
+              <span class="input-group-text"><i class="fas fa-key fa-2x"></i></span>
               <input
                 type="password"
                 class="form-control"
@@ -42,7 +30,7 @@
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text"><i class="fas fa-key"></i></span>
+              <span class="input-group-text"><i class="fas fa-key  fa-2x"></i></span>
               <input
                 type="password"
                 class="form-control"
@@ -54,7 +42,7 @@
 
             <div class="input-group mb-3">
               <span class="input-group-text"
-                ><i class="fas fa-map-marker"></i
+                ><i class="fas fa-map-marker fa-2x"></i
               ></span>
               <input
                 type="password"
@@ -67,7 +55,7 @@
 
             <div class="input-group mb-3">
               <span class="input-group-text"
-                ><i class="fas fa-calendar-minus"></i
+                ><i class="fas fa-calendar-minus fa-2x"></i
               ></span>
               <input
                 type="date"
@@ -79,7 +67,7 @@
 
             <div class="input-group mb-3">
               <span class="input-group-text"
-                ><i class="fas fa-mobile"></i
+                ><i class="fas fa-mobile fa-2x"></i
               ></span>
               <input
                 type="number"
@@ -109,14 +97,19 @@
 <script>
 export default {};
 </script>
-
 <style>
-.details{
-     margin-top: 70px;
+.logo2 {
+  margin-top: 40px;
+}
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
 }
 .heading {
+  margin-top: 0px;
   text-align: center;
-  margin-bottom: 20px;
 }
 .Login {
   text-align: center;
@@ -126,10 +119,9 @@ export default {};
   margin-top: 10px;
 }
 .card {
-  height: 600px;
+  margin-top: 0px;
+  height: 550px;
   width: 600px;
-  margin-top: auto;
-  margin-bottom: auto;
   position: relative;
   display: flex;
   justify-content: center;
@@ -142,29 +134,8 @@ export default {};
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
 }
-.brand_logo_container {
-  position: absolute;
-  height: 170px;
-  width: 170px;
-  top: -75px;
-  border-radius: 50%;
-  background: #60a3bc;
-  padding: 10px;
-  text-align: center;
-}
-.brand_logo {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
-  border: 2px solid white;
-}
-.form_container {
-  margin-top: 100px;
-}
-
 .input-group-text {
   background: #c0392b !important;
   color: white !important;
-  width: 10%;
 }
 </style>
