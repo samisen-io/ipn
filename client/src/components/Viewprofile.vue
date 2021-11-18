@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <h1 class="profileHeading">ProfileDetails</h1>
-    <div class="buttonForEdit">
-      <button type="button" class="btn btn-info">Edit</button>
-    </div>
     <div class="viewProfilecard">
+      <div class="buttonInProfile">
+      <button type="button" class="btn btn-info">Edit</button>
+      </div>
       <div class="row">
         <div class="col">
           <img src="../assets/user.png" class="img" alt="UserLogo" />
@@ -94,10 +94,8 @@ export default {
 .forForm {
   margin-bottom: 50px;
 }
-.buttonForEdit {
-  margin-top: 20px;
-  position: absolute;
-  right: 350px;
+.buttonInProfile{
+  text-align: right;
 }
 .profileHeading {
   margin-top: 20px;

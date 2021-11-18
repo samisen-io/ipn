@@ -38,7 +38,9 @@
               <form v-on:submit.prevent autocomplete="off">
                 <div class="container">
                   <div class="input-group mb-3">
-                    <span class="input-group-text" style="width:30%">Article Name</span>
+                    <span class="input-group-text" style="width: 30%"
+                      >Article Name</span
+                    >
                     <input
                       type="text"
                       class="form-control"
@@ -50,7 +52,9 @@
                   </div>
 
                   <div class="input-group mb-3">
-                    <span style="width:30%" class="input-group-text">Date</span>
+                    <span style="width: 30%" class="input-group-text"
+                      >Date</span
+                    >
                     <input
                       type="Date"
                       class="form-control"
@@ -61,7 +65,9 @@
                   </div>
 
                   <div class="input-group mb-3">
-                    <span style="width:30%" class="input-group-text">Place</span>
+                    <span style="width: 30%" class="input-group-text"
+                      >Place</span
+                    >
                     <input
                       type="text"
                       class="form-control"
@@ -98,6 +104,7 @@
         placeholder="Search Article By Name"
         aria-label="Search"
         aria-describedby="basic-addon1"
+        v-model="search"
       />
     </div>
     <table class="table table-striped table-bordered">
@@ -110,7 +117,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="value in data" :key="value">
+        <tr v-for="value in filterDataResult" :key="value">
           <td scope="row">{{ value.ArticleName }}</td>
           <td>{{ value.Date }}</td>
           <td>{{ value.Place }}</td>
@@ -119,7 +126,9 @@
             <button type="button" class="btn btn-success">View</button>
           </td>
           <td v-else>
-            <button type="button" class="btn btn-info" @click="goToEditPage()">Edit</button>
+            <button type="button" class="btn btn-info" @click="goToEditPage()">
+              Edit
+            </button>
           </td>
         </tr>
       </tbody>
@@ -128,96 +137,104 @@
 </template>
 
 <script>
-import router from "../router"
+import router from "../router";
 export default {
-  methods:{
-    goToEditPage(){
-       router.push('EditArticle')
-    }
+  computed: {
+    filterDataResult() {
+      return this.articleData.filter((x) => {
+        return x.ArticleName.match(this.search)
+      });
+    },
+  },
+  methods: {
+    goToEditPage() {
+      router.push("EditArticle");
+    },
   },
   data() {
     return {
-      data: [
+      search: "",
+      articleData: [
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT21",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Publish",
         },
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT22",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Draft",
         },
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT23",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Draft",
         },
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT24",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Draft",
         },
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT25",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Publish",
         },
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT26",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Publish",
         },
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT27",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Draft",
         },
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT28",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Draft",
         },
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT29",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Publish",
         },
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT30",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Draft",
         },
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT31",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Publish",
         },
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT32",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Publish",
         },
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT33",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Publish",
         },
         {
-          ArticleName: "IccWorldCupT20",
+          ArticleName: "IccWorldCupT34",
           Date: "10/11/2021",
           Place: "Dubai",
           Status: "Publish",
