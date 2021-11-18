@@ -1,26 +1,19 @@
 <template>
-  <div class="container h-100">
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <div class="d-flex justify-content-center h-100">
+  <div class="container">
+    <img src="../assets/IPNLogo.png" class="logo" alt="Logo" />
+
+    <div class="d-flex justify-content-center">
       <div class="user_card">
-        <div class="d-flex justify-content-center">
-          <div class="brand_logo_container">
-            <img src="../assets/user.png" class="brand_logo" alt="Logo" />
-          </div>
-        </div>
+        <h3 class="heading">Welcome to IPN To Login</h3>
+        <br />
         <div>
-          <h3 class="heading">Welcome to IPN To Login</h3>
           <form>
             <div class="input-group mb-3">
-              <span class="input-group-text"><i class="fas fa-user"></i></span>
+              <span class="input-group-text"
+                ><i class="fas fa-user fa-2x"></i
+              ></span>
               <input
                 type="email"
-                
                 class="form-control"
                 placeholder="Email"
                 aria-label="Location"
@@ -29,7 +22,9 @@
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text"><i class="fas fa-key"></i></span>
+              <span class="input-group-text"
+                ><i class="fas fa-key fa-2x"></i
+              ></span>
               <input
                 type="password"
                 class="form-control"
@@ -40,7 +35,13 @@
             </div>
 
             <div class="Login">
-              <button type="button" class="btn btn-primary" @click="goToCreateArticle()">Login</button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="goToCreateArticle()"
+              >
+                Login
+              </button>
             </div>
           </form>
         </div>
@@ -59,33 +60,31 @@
 </template>
 
 <script>
-import router from "../router"
+import router from "../router";
 export default {
-  methods:{
-    goToCreateArticle(){
-       router.push('CreateArticles')
-    }
-  }
+  methods: {
+    goToCreateArticle() {
+      router.push("CreateArticles");
+    },
+  },
 };
 </script>
 
 <style>
-.heading{
+.heading {
   text-align: center;
-  margin-bottom: 20px;
 }
-.Login{
-   text-align: center;
+.Login {
+  text-align: center;
+  margin-top: 10px;
 }
-.Forgotpassword{
-text-align: center;
-margin-top: 10px;
+.Forgotpassword {
+  text-align: center;
 }
 .user_card {
-  height: 500px;
+  height: 350px;
   width: 450px;
- 
-  margin-bottom: 50px;
+
   position: relative;
   display: flex;
   justify-content: center;
@@ -98,22 +97,7 @@ margin-top: 10px;
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
 }
-.brand_logo_container {
-  position: absolute;
-  height: 170px;
-  width: 170px;
-  top: -75px;
-  border-radius: 50%;
-  background: #60a3bc;
-  padding: 10px;
-  text-align: center;
-}
-.brand_logo {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
-  border: 2px solid white;
-}
+
 .form_container {
   margin-top: 100px;
 }
@@ -121,9 +105,5 @@ margin-top: 10px;
 .input-group-text {
   background: #c0392b !important;
   color: white !important;
-  width: 10%;
-  
 }
-
-
 </style>
