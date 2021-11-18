@@ -13,5 +13,10 @@ namespace server.DataContext
     public virtual DbSet<User> Users { get; set; }
     public virtual DbSet<Post> Posts { get; set; }
 
-  }
+    public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<PostCategory> Post_Category { get; set; }
+        public virtual DbSet<PostComment> Post_Comment { get; set; }
+
+        public virtual DbSet<PostMeta> Post_Meta { get; set; }
+    }
 }

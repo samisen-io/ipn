@@ -1,6 +1,6 @@
 namespace server.Models;
 
-public class post_category
+public class PostCategory
 {
   public long postId { get; set; }
   public long categoryId { get; set; }

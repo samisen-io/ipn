@@ -1,5 +1,5 @@
 namespace server.Models;
-public class category
+public class Category
 {
   public long id { get; set; }
   public long parentId { get; set; }

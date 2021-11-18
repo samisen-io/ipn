@@ -1,6 +1,6 @@
 namespace server.Models;
 
-public class postComment
+public class PostComment
 {
   public long id { get; set; }
   public long postId { get; set; }
