@@ -1,8 +1,8 @@
 <template>
-  <div class="container"> 
-    <div class="mt-4 p-5 bg-light text-white rounded">
-      <img src="../assets/IPNLogo.png" class="logo" alt="Logo" />
-    </div>
+  <div class="container">
+   
+      <img src="../assets/NewsList.png" class="Blogo" alt="Logo" />
+   
     <div class="media-list">
       <div class="media" v-for="article in articles" :key="article.url">
         <div class="d-flex align-items-center">
@@ -189,7 +189,15 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
+.Blogo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  
+}
 .media-object {
   width: 128px;
   padding: 10px;
