@@ -18,6 +18,11 @@ IConfiguration Configuration = new ConfigurationBuilder()
 builder.Services.AddSingleton<IConfiguration>(Configuration);
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IPostCategoryService, PostCategoryService>();
+builder.Services.AddScoped<IPostMetaService, PostMetaService>();
+builder.Services.AddScoped<IPostCommentService, PostCommentService>();
+
 
 builder.Services.AddDbContextPool<AppDBContext>(options => options
       .UseMySql(Configuration.GetConnectionString("DefaultConnection"),
