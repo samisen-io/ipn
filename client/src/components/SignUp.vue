@@ -105,14 +105,12 @@
 export default {};
 </script>
 <style>
-.logo2 {
-  margin-top: 40px;
-}
 .logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
+  margin-top: 2px;
 }
 .heading {
   margin-top: 0px;
