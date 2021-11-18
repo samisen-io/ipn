@@ -4,11 +4,14 @@
     <div class="d-flex justify-content-center">
       <div class="card">
         <div>
-          <h3 class="heading">Register An Account To Login To IPN</h3><br />
-          
+          <h3 class="heading">Register An Account To Login To IPN</h3>
+          <br />
+
           <form>
             <div class="input-group mb-3">
-              <span class="input-group-text"><i class="fas fa-user fa-2x"></i></span>
+              <span class="input-group-text"
+                ><i class="fas fa-user fa-2x"></i
+              ></span>
               <input
                 type="email"
                 class="form-control"
@@ -19,7 +22,9 @@
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text"><i class="fas fa-key fa-2x"></i></span>
+              <span class="input-group-text"
+                ><i class="fas fa-key fa-2x"></i
+              ></span>
               <input
                 type="password"
                 class="form-control"
@@ -30,7 +35,9 @@
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text"><i class="fas fa-key  fa-2x"></i></span>
+              <span class="input-group-text"
+                ><i class="fas fa-key fa-2x"></i
+              ></span>
               <input
                 type="password"
                 class="form-control"
