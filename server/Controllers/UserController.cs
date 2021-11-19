@@ -38,11 +38,7 @@ public class UserController : ControllerBase
   [HttpPost]
   public async Task<ActionResult<User>> Insert(User dto)
   {
-    if (dto.id <= 0)
-    {
-      return BadRequest("Id cannot be set for insert action.");
-    }
-
+ 
     var id = await _userDBService.Insert(dto);
     if (id != default)
       return CreatedAtRoute("FindOne", new { id = id }, dto);

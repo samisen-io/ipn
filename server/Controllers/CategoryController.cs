@@ -38,11 +38,7 @@ public class CategoryController : ControllerBase
   [HttpPost]
   public async Task<ActionResult<Category>> Insert(Category dto)
   {
-    if (dto.id <= 0)
-    {
-      return BadRequest("Id cannot be set for insert action.");
-    }
-
+  
     var id = await _CategoryDBService.Insert(dto);
     if (id != default)
       return CreatedAtRoute("FindOne", new { id = id }, dto);

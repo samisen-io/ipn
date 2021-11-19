@@ -38,11 +38,7 @@ public class PostController : ControllerBase
   [HttpPost]
   public async Task<ActionResult<Post>> Insert(Post dto)
   {
-    if (dto.id <= 0)
-    {
-      return BadRequest("Id cannot be set for insert action.");
-    }
-
+   
     var id = await _PostDBService.Insert(dto);
     if (id != default)
       return CreatedAtRoute("FindOne", new { id = id }, dto);
