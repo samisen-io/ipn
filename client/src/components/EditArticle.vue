@@ -1,48 +1,81 @@
 <template>
-  <div class="container">
-    <div v-for="value in data" :key="value">
-      <h1 class="mainHeading">Edit Article</h1>
-      <div class="col d-flex justify-content-center">
-        <div class="EditArticleDetailsCard">
-          <div class="input-group">
-            <span class="input-group-text">Title</span>
-            <input
-              type="text"
-              aria-label="First name"
-              class="form-control"
-              v-model="value.title"
-            />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span class="input-group-text">Location</span>
-            <input
-              type="text"
-              aria-label="Last name"
-              class="form-control"
-              v-model="value.Location"
-            />
+  <div>
+    <div class="signOut">
+      <router-link to="/">Logout</router-link>
+    </div>
+    <div class="container">
+      <div v-for="value in data" :key="value">
+        <h1 class="mainHeading">Edit Article</h1>
+        <div class="col d-flex justify-content-center">
+          <div class="EditArticleDetailsCard">
+            <div class="input-group">
+              <span class="input-group-text">Title</span>
+              <input
+                type="text"
+                aria-label="First name"
+                class="form-control"
+                v-model="value.title"
+              />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span class="input-group-text">Location</span>
+              <input
+                type="text"
+                aria-label="Last name"
+                class="form-control"
+                v-model="value.Location"
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="thumbnail">
-        <h3>Upload u r Images and videos</h3>
-        <input id="files" type="file" multiple />
-        <output id="result" />
-      </div>
-      <br />
-      <h1 class="headingForAnArticle">ArticleText</h1>
-      <div class="editArticleTextCard">
-        <textarea class="textarea" name="bio" v-model="value.ArticleText">
-        </textarea>
-      </div>
 
-      <div class="divforbuttons">
-        <button type="button" class="btn btn-primary">Publish</button>&nbsp;
-        <button
-          type="button"
-          class="btn btn-success"
-          @click="goToCreateArticlePage()"
-        >
-          Save
-        </button>
+        <div class="row">
+          <div class="col-3">
+            <div class="d-flex flex-row">
+              <input type="file" ref="file" multiple="multiple" />
+              <div
+                class="p-2 bd-highlight"
+                v-for="(im, index) in files"
+                :key="im"
+              >
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h3>{{ im.name }}</h3>
+                    </div>
+                    <div class="col">
+                      <button
+                        class="btn btn-outline-primary"
+                        @click="deleteColumn(index)"
+                      >
+                        Delete Items
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <button @click="submitFiles()">Add</button>
+          </div>
+        </div>
+        <br />
+        <h1 class="headingForAnArticle">ArticleText</h1>
+        <div class="editArticleTextCard">
+          <textarea class="textarea" name="bio" v-model="value.ArticleText">
+          </textarea>
+        </div>
+
+        <div class="divforbuttons">
+          <button type="button" class="btn btn-primary">Publish</button>&nbsp;
+          <button
+            type="button"
+            class="btn btn-success"
+            @click="goToCreateArticlePage()"
+          >
+            Save
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -50,60 +83,6 @@
 
 <script>
 import router from "../router";
-window.onload = function () {
-  if (window.File && window.FileList && window.FileReader) {
-    var filesInput = document.getElementById("files");
-    filesInput.addEventListener("change", function (event) {
-      var files = event.target.files;
-      var output = document.getElementById("result");
-      for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        if (file.type.match("image")) {
-          var picReader = new FileReader();
-          picReader.addEventListener("load", function (event) {
-            var picFile = event.target;
-            var div = document.createElement("div");
-            div.innerHTML =
-              "<img  src='" +
-              picFile.result +
-              "'" +
-              "title='" +
-              picFile.name +
-              "'/>";
-
-            output.insertBefore(div, null);
-          });
-
-          picReader.readAsDataURL(file);
-        } else if (file.type.match("video")) {
-          let reader = new FileReader();
-          reader.readAsArrayBuffer(file);
-          reader.onload = function (e) {
-            let buffer = e.target.result;
-            let videoBlob = new Blob([new Uint8Array(buffer)], {
-              type: "video/mp4",
-            });
-            let url = window.URL.createObjectURL(videoBlob);
-
-            var div = document.createElement("div");
-            div.innerHTML =
-              "<video class='thumbnail' controls>'" +
-              "<source src='" +
-              url +
-              "'" +
-              " type='video/mp4'>'" +
-              "</video>";
-            output.insertBefore(div, null);
-          };
-          picReader.readAsDataURL(file);
-        }
-      }
-    });
-  } else {
-    console.log("");
-  }
-};
-
 export default {
   created() {
     this.$getLocation({}).then((coordinates) => {
@@ -113,6 +92,8 @@ export default {
   },
   data() {
     return {
+      formData: [],
+      files: [],
       data: [
         {
           image: "",
@@ -127,6 +108,18 @@ export default {
   methods: {
     goToCreateArticlePage() {
       router.push("CreateArticles");
+    },
+    submitFiles() {
+      this.formData = new FormData();
+      for (var i = 0; i < this.$refs.file.files.length; i++) {
+        let file = this.$refs.file.files[i];
+        this.formData.append("files[" + i + "]", file);
+        this.files.push(file);
+        console.log("Files");
+      }
+    },
+    deleteColumn: function (index) {
+      this.files.splice(index, 1);
     },
   },
 };
@@ -190,7 +183,6 @@ export default {
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .editArticleTextCard {
-
   height: 450px;
   width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -200,8 +192,17 @@ export default {
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .textarea {
-  
   height: 449px;
   width: 100%;
+}
+.card-body {
+  height: 180px;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: inline-block;
 }
 </style>

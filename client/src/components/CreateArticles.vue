@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="signOut">
+      <router-link to="/">Logout</router-link>
+    </div>
     <viewprofile />
     <articles-list />
   </div>
@@ -14,4 +17,7 @@ export default {
 </script>
 
 <style>
+.signOut {
+  text-align: right;
+}
 </style>

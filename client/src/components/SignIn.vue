@@ -18,6 +18,7 @@
                 placeholder="Email"
                 aria-label="Location"
                 aria-describedby="basic-addon1"
+                v-model="input.email"
               />
             </div>
 
@@ -31,6 +32,7 @@
                 placeholder="password"
                 aria-label="Location"
                 aria-describedby="basic-addon1"
+                v-model="input.password"
               />
             </div>
 
@@ -38,7 +40,7 @@
               <button
                 type="button"
                 class="btn btn-primary"
-                @click="goToCreateArticle()"
+                @click="login()"
               >
                 Login
               </button>
@@ -60,11 +62,27 @@
 </template>
 
 <script>
-import router from "../router";
+
 export default {
+  data() {
+    return {
+      input: {
+        email: "",
+        password: "",
+      },
+    };
+  },
   methods: {
-    goToCreateArticle() {
-      router.push("CreateArticles");
+    login() {
+      if (this.input.email != "" && this.input.password != "") {
+        
+        this.$router.replace({ name: "CreateArticles" });
+        console.log(this.input.email);
+        console.log(this.input.password);
+      } else {
+        alert("Login with email and Password")
+        this.$router.replace({ name: "SignIn" });
+      }
     },
   },
 };

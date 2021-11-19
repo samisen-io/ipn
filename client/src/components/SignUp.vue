@@ -13,11 +13,51 @@
                 ><i class="fas fa-user fa-2x"></i
               ></span>
               <input
+                type="text"
+                class="form-control"
+                placeholder="FirstName"
+                aria-label="Location"
+                aria-describedby="basic-addon1"
+                v-model="firstName"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text"
+                ><i class="fas fa-user fa-2x"></i
+              ></span>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="MiddleName"
+                aria-label="Location"
+                aria-describedby="basic-addon1"
+                v-model="middleName"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text"
+                ><i class="fas fa-user fa-2x"></i
+              ></span>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="LastName"
+                aria-label="Location"
+                aria-describedby="basic-addon1"
+                v-model="lastName"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text"
+                ><i class="fas fa-user fa-2x"></i
+              ></span>
+              <input
                 type="email"
                 class="form-control"
                 placeholder="Email"
                 aria-label="Location"
                 aria-describedby="basic-addon1"
+                v-model="email"
               />
             </div>
 
@@ -31,44 +71,7 @@
                 placeholder="password"
                 aria-label="Location"
                 aria-describedby="basic-addon1"
-              />
-            </div>
-
-            <div class="input-group mb-3">
-              <span class="input-group-text"
-                ><i class="fas fa-key fa-2x"></i
-              ></span>
-              <input
-                type="password"
-                class="form-control"
-                placeholder="Confirm password"
-                aria-label="Location"
-                aria-describedby="basic-addon1"
-              />
-            </div>
-
-            <div class="input-group mb-3">
-              <span class="input-group-text"
-                ><i class="fas fa-map-marker fa-2x"></i
-              ></span>
-              <input
-                type="password"
-                class="form-control"
-                placeholder="Location"
-                aria-label="Location"
-                aria-describedby="basic-addon1"
-              />
-            </div>
-
-            <div class="input-group mb-3">
-              <span class="input-group-text"
-                ><i class="fas fa-calendar-minus fa-2x"></i
-              ></span>
-              <input
-                type="date"
-                class="form-control"
-                aria-label="Location"
-                aria-describedby="basic-addon1"
+                v-model="password"
               />
             </div>
 
@@ -82,11 +85,18 @@
                 placeholder="Mobile Number"
                 aria-label="Location"
                 aria-describedby="basic-addon1"
+                v-model="mobileNumber"
               />
             </div>
 
             <div class="Login">
-              <button type="button" class="btn btn-primary">SignUp</button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="regiesterAnAccount()"
+              >
+                SignUp
+              </button>
             </div>
           </form>
         </div>
@@ -102,7 +112,58 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default {
+  data() {
+    return {
+      jsonData: [],
+      firstName: "",
+      middleName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      mobileNumber: "",
+      profile: "active",
+      lastLogin: Date.now,
+      regiesterAt: Date.now,
+    };
+  },
+  methods: {
+    regiesterAnAccount() {
+      if (
+        (this.firstName != "",
+        this.lastName != "",
+        this.middleName != "",
+        this.email != "",
+        this.password != "",
+        this.mobileNumber != "")
+      ) {
+        console.log(this.firstName);
+        console.log(this.password);
+        console.log(this.email);
+        console.log(this.mobileNumber);
+        axios
+          .post("https://2917-27-6-41-215.ngrok.io/user", {
+            firstName: this.firstName,
+            middleName: this.middleName,
+            lastName: this.lastName,
+            mobile: this.mobile,
+            email: this.email,
+            passwordHash: this.password,
+            lastLogin: this.lastLogin,
+            registeredAt: this.regiesterAt,
+            profile: this.profile,
+          })
+          .then((response) => {
+            this.jsonData = response.data;
+          });
+        this.$router.replace({ name: "CreateArticles" });
+      } else {
+        alert("Enter the Items");
+      }
+    },
+  },
+};
 </script>
 <style>
 .logo {
