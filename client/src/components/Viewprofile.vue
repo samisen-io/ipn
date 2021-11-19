@@ -129,7 +129,7 @@
           <br />
           <br />
           <div class="input-group mb-3">
-            <span class="input-group-text" style="width: 20%" id="basic-addon1"
+            <span class="input-group-text" style="width: 30%" id="basic-addon1"
               >Name</span
             >
             <input
@@ -142,7 +142,7 @@
             />
           </div>
           <div class="input-group mb-3">
-            <span class="input-group-text" style="width: 20%" id="basic-addon1"
+            <span class="input-group-text" style="width: 30%" id="basic-addon1"
               >Location</span
             >
             <input
@@ -156,7 +156,7 @@
           </div>
 
           <div class="input-group mb-3">
-            <span class="input-group-text" style="width: 20%" id="basic-addon1"
+            <span class="input-group-text" style="width: 30%" id="basic-addon1"
               >DateOfBirth</span
             >
             <input
@@ -168,7 +168,7 @@
             />
           </div>
           <div class="input-group mb-3">
-            <span class="input-group-text" style="width: 20%" id="InputTag"
+            <span class="input-group-text" style="width: 30%" id="InputTag"
               >MobileNumber</span
             >
             <input
