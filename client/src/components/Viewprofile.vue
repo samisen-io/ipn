@@ -3,7 +3,121 @@
     <h1 class="profileHeading">ProfileDetails</h1>
     <div class="viewProfilecard">
       <div class="buttonInProfile">
-      <button type="button" class="btn btn-info">Edit</button>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-info"
+          data-bs-toggle="modal"
+          data-bs-target="#Edit"
+        >
+          Edit
+        </button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="Edit"
+          tabindex="-1"
+          aria-labelledby="EditLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="EditLabel">Change u r Details</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="input-group mb-3">
+                  <span
+                    class="input-group-text"
+                    style="width: 30%"
+                    id="basic-addon1"
+                    >Name</span
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Username"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                  />
+                </div>
+                <div class="input-group mb-3">
+                  <span
+                    class="input-group-text"
+                    style="width: 30%"
+                    id="basic-addon1"
+                    >Location</span
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Location"
+                    aria-label="Location"
+                    aria-describedby="basic-addon1"
+                  />
+                </div>
+
+                <div class="input-group mb-3">
+                  <span
+                    class="input-group-text"
+                    style="width: 30%"
+                    id="basic-addon1"
+                    >DateOfBirth</span
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    aria-label="DateOfBirth"
+                    aria-describedby="basic-addon1"
+                  />
+                </div>
+                <div class="input-group mb-3">
+                  <span
+                    class="input-group-text"
+                    style="width: 30%"
+                    id="InputTag"
+                    >MobileNumber</span
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="MobileNumber"
+                    aria-label="MobileNumber"
+                    aria-describedby="basic-addon1"
+                  />
+                </div>
+                <div class="input-group mb-3">
+                  <span
+                    class="input-group-text"
+                    style="width: 30%"
+                    id="InputTag"
+                    >Image</span
+                  >
+                 
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col">
@@ -94,7 +208,7 @@ export default {
 .forForm {
   margin-bottom: 50px;
 }
-.buttonInProfile{
+.buttonInProfile {
   text-align: right;
 }
 .profileHeading {

@@ -2,47 +2,38 @@
   <div class="container">
     <div v-for="value in data" :key="value">
       <h1 class="mainHeading">Edit Article</h1>
-
-      <div class="mb-4 row">
-        <label for="staticEmail" class="col-sm-1 col-form-label">Title:</label>
-        <div class="col-sm-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Title For An News Article"
-          />
+      <div class="col d-flex justify-content-center">
+        <div class="EditArticleDetailsCard">
+          <div class="input-group">
+            <span class="input-group-text">Title</span>
+            <input
+              type="text"
+              aria-label="First name"
+              class="form-control"
+              v-model="value.title"
+            />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="input-group-text">Location</span>
+            <input
+              type="text"
+              aria-label="Last name"
+              class="form-control"
+              v-model="value.Location"
+            />
+          </div>
         </div>
       </div>
-
-      <div class="mb-2 row">
-        <label for="Location" class="col-sm-1 col-form-label">Location:</label>
-        <div class="col-sm-3">
-          <input
-            disabled
-            type="text"
-            class="form-control"
-            placeholder="Location"
-            v-model="value.Location"
-          />
-        </div>
-      </div>
-
       <div class="thumbnail">
         <h3>Upload u r Images and videos</h3>
         <input id="files" type="file" multiple />
         <output id="result" />
       </div>
       <br />
-      <div class="form-floating">
-        <h1 class="headingForAnArticle">ArticleText</h1>
-        <textarea
-          class="form-control"
-          placeholder="Leave a comment here"
-          id="floatingTextarea2"
-          style="height: 400px"
-          v-model="value.ArticleText"
-        ></textarea>
+      <h1 class="headingForAnArticle">ArticleText</h1>
+      <div class="editArticleTextCard">
+        <textarea class="textarea" name="bio" v-model="value.ArticleText">
+        </textarea>
       </div>
+
       <div class="divforbuttons">
         <button type="button" class="btn btn-primary">Publish</button>&nbsp;
         <button
@@ -177,5 +168,40 @@ export default {
   margin-top: 15px;
   margin-bottom: 20px;
   display: inline-block;
+}
+.EditArticleDetailsCard {
+  align-items: center;
+  text-align: center;
+  border: 3px solid #0091d5;
+  border-radius: 15px;
+  height: 70px;
+  width: 80%;
+  margin-top: auto;
+  margin-bottom: 30px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.editArticleTextCard {
+
+  height: 450px;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.textarea {
+  
+  height: 449px;
+  width: 100%;
 }
 </style>
