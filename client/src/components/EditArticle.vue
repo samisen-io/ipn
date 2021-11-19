@@ -26,39 +26,32 @@
             </div>
           </div>
         </div>
+        <div class="col d-flex justify-content-center">
+          <div class="row">
+            <h1 class="mainHeading">Did U Like U to Add Photos ?</h1>
+            <div class="col-6">
+              <div>
+                <input class="input-group" type="file" ref="file" multiple="multiple" />
 
-        <div class="row">
-          <div class="col-3">
-            <div class="d-flex flex-row">
-              <input type="file" ref="file" multiple="multiple" />
-              <div
-                class="p-2 bd-highlight"
-                v-for="(im, index) in files"
-                :key="im"
-              >
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h3>{{ im.name }}</h3>
-                    </div>
-                    <div class="col">
-                      <button
-                        class="btn btn-outline-primary"
-                        @click="deleteColumn(index)"
-                      >
-                        Delete Items
-                      </button>
-                    </div>
+                <div v-for="(im, index) in files" :key="im">
+                  <div class="card-body">
+                    <h4>FileName:-{{ im.name }}</h4>
+                    <button
+                      class="btn btn-outline-primary"
+                      @click="deleteColumn(index)"
+                    >
+                      Delete Items
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="col-4">
-            <button @click="submitFiles()">Add</button>
+            <div class="col-6">
+              <button @click="submitFiles()" class="btn btn-primary">Add</button>
+            </div>
           </div>
         </div>
+
         <br />
         <h1 class="headingForAnArticle">ArticleText</h1>
         <div class="editArticleTextCard">
@@ -183,6 +176,7 @@ export default {
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .editArticleTextCard {
+  margin-top: 5px;
   height: 450px;
   width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -196,13 +190,17 @@ export default {
   width: 100%;
 }
 .card-body {
-  height: 180px;
-  width: 100%;
+   border: 3px solid red;
+  border-radius: 15px;
+  display: inline-block;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  height: 300px;
+  width: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  display: inline-block;
 }
 </style>
