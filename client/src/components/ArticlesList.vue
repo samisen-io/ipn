@@ -127,7 +127,14 @@
           </td>
           <td v-else>
             <button type="button" class="btn btn-info" @click="goToEditPage()">
-              Edit
+              Edit</button
+            >&nbsp;
+            <button
+              type="button"
+              class="btn btn-danger"
+              @click="deleteAnRecordFromList()"
+            >
+              Delete
             </button>
           </td>
         </tr>
@@ -142,13 +149,16 @@ export default {
   computed: {
     filterDataResult() {
       return this.articleData.filter((x) => {
-        return x.ArticleName.match(this.search)
+        return x.ArticleName.match(this.search);
       });
     },
   },
   methods: {
     goToEditPage() {
       router.push("EditArticle");
+    },
+    deleteAnRecordFromList() {
+      alert("Did u want to delete the record");
     },
   },
   data() {
