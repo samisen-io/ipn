@@ -19,20 +19,20 @@ const routes = [
 
     },
     {
-        path: "/createArticles",
+        path: "/createarticles",
         name: "CreateArticles",
         component: CreateArticles,
 
     },
     {
-        path: "/editArticle",
+        path: "/editarticle",
         name: "EditArticle",
         component: EditArticle,
     },
     {
-        path:"/NewsFeed",
-        name:"NewsFeed",
-        component:NewsFeed
+        path: "/newsfeed",
+        name: "NewsFeed",
+        component: NewsFeed
     }
 
 ];
