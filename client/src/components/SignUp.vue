@@ -15,7 +15,7 @@
                 class="form-control"
                 placeholder="FirstName"
                 aria-label="FirstName"
-                v-model="firstName"
+                v-model="formData.firstName"
               />
             </div>
             <div class="input-group mb-3">
@@ -27,7 +27,7 @@
                 class="form-control"
                 placeholder="MiddleName"
                 aria-label="MiddleName"
-                v-model="middleName"
+                v-model="formData.middleName"
               />
             </div>
             <div class="input-group mb-3">
@@ -39,7 +39,7 @@
                 class="form-control"
                 placeholder="LastName"
                 aria-label="LastName"
-                v-model="lastName"
+                v-model="formData.lastName"
               />
             </div>
 
@@ -53,7 +53,7 @@
                 placeholder="Email"
                 aria-label="Email"
                 aria-describedby="basic-addon1"
-                v-model="email"
+                v-model="formData.email"
               />
             </div>
             <div class="input-group mb-3">
@@ -66,7 +66,7 @@
                 placeholder="password"
                 aria-label="password"
                 aria-describedby="basic-addon1"
-                v-model="password"
+                v-model="formData.password"
               />
             </div>
 
@@ -80,7 +80,7 @@
                 placeholder="Mobile Number"
                 aria-label="Location"
                 aria-describedby="basic-addon1"
-                v-model="mobile"
+                v-model="formData.mobile"
               />
             </div>
             <div class="Login">
@@ -103,33 +103,35 @@ import axios from "axios";
 export default {
   data() {
     return {
-      firstName: "",
-      middleName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      mobile: "",
+      formData: {
+        firstName: "",
+        middleName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        mobile: "",
+      },
     };
   },
   methods: {
     regiesterAnAccount() {
       if (
-        (this.firstName != "",
-        this.lastName != "",
-        this.middleName != "",
-        this.email != "",
-        this.password != "",
-        this.mobileNumber != "")
+        (this.formData.firstName != "",
+        this.formData.lastName != "",
+        this.formData.middleName != "",
+        this.formData.email != "",
+        this.formData.password != "",
+        this.formData.mobileNumber != "")
       ) {
         const date = new Date();
         axios
-          .post("http://ipn.azurewebsites.net/user", {
-            firstName: this.firstName,
-            middleName: this.middleName,
-            lastName: this.lastName,
-            mobile: this.mobile,
-            email: this.email,
-            passwordHash: this.password,
+          .post("https://localhost:44369/user", {
+            firstName: this.formData.firstName,
+            middleName: this.formData.middleName,
+            lastName: this.formData.lastName,
+            mobile: this.formData.mobile,
+            email: this.formData.email,
+            passwordHash: this.formData.password,
             profile: "active",
             lastLogin: date,
             registeredAt: date,
@@ -142,6 +144,8 @@ export default {
           .catch((error) => {
             console.log(error);
           });
+        this.formData = {};
+        this.$router.replace({ name: "SignIn" });
       } else {
         alert("Enter the Items");
       }

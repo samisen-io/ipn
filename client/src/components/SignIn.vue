@@ -7,7 +7,7 @@
         <h3 class="heading">Welcome to IPN To Login</h3>
         <br />
         <div>
-          <form>
+          <form @submit.prevent="login">
             <div class="input-group mb-3">
               <span class="input-group-text"
                 ><i class="fas fa-user fa-2x"></i
@@ -37,13 +37,7 @@
             </div>
 
             <div class="Login">
-              <button
-                type="button"
-                class="btn btn-primary"
-                @click="login()"
-              >
-                Login
-              </button>
+              <button class="btn btn-primary" @click="login()">Login</button>
             </div>
           </form>
         </div>
@@ -62,6 +56,7 @@
 </template>
 
 <script>
+import axios from "axios";
 
 export default {
   data() {
@@ -75,12 +70,26 @@ export default {
   methods: {
     login() {
       if (this.input.email != "" && this.input.password != "") {
-        
-        this.$router.replace({ name: "CreateArticles" });
+        axios
+          .get("https://localhost:44369/user/Authenticate", {
+            headers: {
+              Authorization: btoa(this.input.email + ":" + this.input.password),
+            },
+          })
+          .then((response) => {
+            this.input.response = response.data;
+            alert(this.input.response.id);
+            if (this.input.response.id != null) {
+              this.$router.replace({ name: "CreateArticles" });
+            } else {
+              alert("Invalid User");
+            }
+          });
+
         console.log(this.input.email);
         console.log(this.input.password);
       } else {
-        alert("Login with email and Password")
+        alert("Login with email and Password");
         this.$router.replace({ name: "SignIn" });
       }
     },
