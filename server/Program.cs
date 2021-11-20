@@ -20,6 +20,7 @@ IConfiguration Configuration = new ConfigurationBuilder()
 builder.Services.AddSingleton<IConfiguration>(Configuration);
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<IMediaService, MediaService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IPostCategoryService, PostCategoryService>();
 builder.Services.AddScoped<IPostMetaService, PostMetaService>();
@@ -42,12 +43,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-  app.UseSwagger();
-  app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

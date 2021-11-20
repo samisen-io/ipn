@@ -3,11 +3,9 @@
     <img src="../assets/IPNLogo.png" class="logo" alt="Logo" />
     <div class="d-flex justify-content-center">
       <div class="card">
+        <h3 class="heading">Register An Account To Login IPN</h3>
         <div>
-          <h3 class="heading">Register An Account To Login IPN</h3>
-          <br />
-
-          <form>
+          <form @submit.prevent="regiesterAnAccount">
             <div class="input-group mb-3">
               <span class="input-group-text"
                 ><i class="fas fa-user fa-2x"></i
@@ -16,8 +14,7 @@
                 type="text"
                 class="form-control"
                 placeholder="FirstName"
-                aria-label="Location"
-                aria-describedby="basic-addon1"
+                aria-label="FirstName"
                 v-model="firstName"
               />
             </div>
@@ -29,8 +26,7 @@
                 type="text"
                 class="form-control"
                 placeholder="MiddleName"
-                aria-label="Location"
-                aria-describedby="basic-addon1"
+                aria-label="MiddleName"
                 v-model="middleName"
               />
             </div>
@@ -42,25 +38,24 @@
                 type="text"
                 class="form-control"
                 placeholder="LastName"
-                aria-label="Location"
-                aria-describedby="basic-addon1"
+                aria-label="LastName"
                 v-model="lastName"
               />
             </div>
+
             <div class="input-group mb-3">
               <span class="input-group-text"
-                ><i class="fas fa-user fa-2x"></i
+                ><i class="fas fa-envelope fa-2x"></i
               ></span>
               <input
                 type="email"
                 class="form-control"
                 placeholder="Email"
-                aria-label="Location"
+                aria-label="Email"
                 aria-describedby="basic-addon1"
                 v-model="email"
               />
             </div>
-
             <div class="input-group mb-3">
               <span class="input-group-text"
                 ><i class="fas fa-key fa-2x"></i
@@ -69,7 +64,7 @@
                 type="password"
                 class="form-control"
                 placeholder="password"
-                aria-label="Location"
+                aria-label="password"
                 aria-describedby="basic-addon1"
                 v-model="password"
               />
@@ -80,27 +75,19 @@
                 ><i class="fas fa-mobile fa-2x"></i
               ></span>
               <input
-                type="number"
+                type="text"
                 class="form-control"
                 placeholder="Mobile Number"
                 aria-label="Location"
                 aria-describedby="basic-addon1"
-                v-model="mobileNumber"
+                v-model="mobile"
               />
             </div>
-
             <div class="Login">
-              <button
-                type="button"
-                class="btn btn-primary"
-                @click="regiesterAnAccount()"
-              >
-                SignUp
-              </button>
+              <button class="btn btn-primary">SignUp</button>
             </div>
           </form>
         </div>
-
         <div class="mt-4">
           <div class="d-flex justify-content-center">
             Already accont? <a href="/" class="ml-2">Sign</a>
@@ -116,16 +103,12 @@ import axios from "axios";
 export default {
   data() {
     return {
-      jsonData: [],
       firstName: "",
       middleName: "",
       lastName: "",
       email: "",
       password: "",
-      mobileNumber: "",
-      profile: "active",
-      lastLogin: Date.now,
-      regiesterAt: Date.now,
+      mobile: "",
     };
   },
   methods: {
@@ -138,26 +121,27 @@ export default {
         this.password != "",
         this.mobileNumber != "")
       ) {
-        console.log(this.firstName);
-        console.log(this.password);
-        console.log(this.email);
-        console.log(this.mobileNumber);
+        const date = new Date();
         axios
-          .post("https://2917-27-6-41-215.ngrok.io/user", {
+          .post("http://ipn.azurewebsites.net/user", {
             firstName: this.firstName,
             middleName: this.middleName,
             lastName: this.lastName,
             mobile: this.mobile,
             email: this.email,
             passwordHash: this.password,
-            lastLogin: this.lastLogin,
-            registeredAt: this.regiesterAt,
-            profile: this.profile,
+            profile: "active",
+            lastLogin: date,
+            registeredAt: date,
           })
           .then((response) => {
-            this.jsonData = response.data;
+            console.log(response);
+
+            this.$router.replace({ name: "SignIn" });
+          })
+          .catch((error) => {
+            console.log(error);
           });
-        this.$router.replace({ name: "CreateArticles" });
       } else {
         alert("Enter the Items");
       }

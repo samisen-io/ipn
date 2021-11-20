@@ -5,3 +5,6 @@
 /server/obj/Debug/net6.0
 /server/bin/Debug/net6.0
 /server/obj
+/server/bin/Release/net6.0
+/tests/bin/Debug/net6.0
+/tests/obj
