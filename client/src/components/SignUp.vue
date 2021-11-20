@@ -4,7 +4,7 @@
     <div class="d-flex justify-content-center">
       <div class="card">
         <div>
-          <h3 class="heading">Register An Account To Login To IPN</h3>
+          <h3 class="heading">Register An Account To Login IPN</h3>
           <br />
 
           <form>
