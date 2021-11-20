@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using server.DataContext;
+using server.Handlers;
 using server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +31,15 @@ builder.Services.AddDbContextPool<AppDBContext>(options => options
           ServerVersion.Create(new Version(10, 5, 4), ServerType.MariaDb))
   );
 
+builder.Services.AddAuthentication("BasicAuthentication")
+            .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+ 
+
+// configure DI for application services
+builder.Services.AddScoped<IUserService, UserService>();
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -40,6 +51,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

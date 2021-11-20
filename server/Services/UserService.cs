@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.EntityFrameworkCore;
 using server.DataContext;
 using server.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace server.Services
 {
@@ -32,6 +35,8 @@ namespace server.Services
       }
     }
 
+   
+
     public async Task<IEnumerable<User>> FindAll()
     {
       return await _dbContext.Users.ToListAsync();
@@ -42,9 +47,10 @@ namespace server.Services
       return await _dbContext.Users.FirstOrDefaultAsync(x => x.id == id);
     }
 
-    public async Task<int> Insert(User forecast)
+    public async Task<int> Insert(User user)
     {
-      _dbContext.Add(forecast);
+      user.passwordHash = HashPassword(user.passwordHash);
+        _dbContext.Add(user);
       return await _dbContext.SaveChangesAsync();
     }
 
@@ -59,6 +65,32 @@ namespace server.Services
       {
         return 0;
       }
+    } 
+
+    public string HashPassword(string password)
+    {
+      string hash;
+      using (var sha256 = SHA256.Create())
+      { 
+        var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));     
+        hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower(); 
+       
+      }
+
+      return hash;
+    }
+
+    public Task<User> Authenticate(string username, string password)
+    {
+      User user;
+      user = _dbContext.Users.SingleOrDefault(x => x.email == username && x.passwordHash == "Test");//HashPassword(password));
+
+      // return null if user not found
+      if (user == null)
+        return null;
+
+      // authentication successful so return user details without password
+      return Task.FromResult<User>(user);
     }
   }
 }

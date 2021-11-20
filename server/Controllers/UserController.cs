@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using server.Models;
 using server.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace server.Controllers;
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class UserController : ControllerBase
@@ -24,6 +26,20 @@ public class UserController : ControllerBase
   {
     return await _userDBService.FindAll();
   }
+
+  [AllowAnonymous]
+  [HttpPost("authenticate")]
+  public async Task<ActionResult<User>> Authenticate([FromBody] Authenticate model)
+  {
+     
+  var user = await _userDBService.Authenticate(model.Username, model.Password);
+
+    if (user == null)
+      return BadRequest(new { message = "Username or password is incorrect" });
+
+    return Ok(user);
+  }
+
 
   [HttpGet("{id}", Name = "FindUser")]
   public async Task<ActionResult<User>> Get(int id)

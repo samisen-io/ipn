@@ -9,5 +9,7 @@ namespace server.Services
     Task<User> FindOne(int id);
     Task<int> Insert(User forecast);
     Task<int> Update(User forecast);
+
+    Task<User> Authenticate(string username, string password);
   }
 }
