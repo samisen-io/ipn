@@ -126,7 +126,11 @@
             <button type="button" class="btn btn-success">View</button>
           </td>
           <td v-else>
-            <button type="button" class="btn btn-info" @click="goToEditPage()">
+            <button
+              type="button"
+              class="btn btn-info"
+              @click="goToEditPage(value.ArticleName)"
+            >
               Edit</button
             >&nbsp;
             <button
@@ -144,7 +148,6 @@
 </template>
 
 <script>
-import router from "../router";
 export default {
   computed: {
     filterDataResult() {
@@ -154,8 +157,8 @@ export default {
     },
   },
   methods: {
-    goToEditPage() {
-      router.push("EditArticle");
+    goToEditPage(id) {
+      this.$router.push({ name: "EditArticle", params: { ArticleName: id } });
     },
     deleteAnRecordFromList() {
       alert("Did u want to delete the record");

@@ -25,7 +25,7 @@ const routes = [
 
     },
     {
-        path: "/editarticle",
+        path: "/editarticle/:ArticleName",
         name: "EditArticle",
         component: EditArticle,
     },
