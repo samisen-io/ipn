@@ -83,7 +83,7 @@ namespace server.Services
     public Task<User> Authenticate(string username, string password)
     {
       User user;
-      user = _dbContext.Users.SingleOrDefault(x => x.email == username && x.passwordHash == "Test");//HashPassword(password));
+      user = _dbContext.Users.SingleOrDefault(x => x.email == username && x.passwordHash == HashPassword(password));
 
       // return null if user not found
       if (user == null)

@@ -51,6 +51,7 @@ public class UserController : ControllerBase
       return NotFound();
   }
 
+  [AllowAnonymous]
   [HttpPost]
   public async Task<ActionResult<User>> Insert(User dto)
   {
