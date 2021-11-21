@@ -6,8 +6,6 @@
     <div class="container">
       <div v-for="value in data" :key="value">
         <h1 class="mainHeading">Edit Article</h1>
-        <div class="col d-flex justify-content-center">
-          <div class="EditArticleDetailsCard">
             <div class="input-group">
               <span class="input-group-text">Title</span>
               <input
@@ -23,39 +21,36 @@
                 class="form-control"
                 v-model="value.Location"
               />
-            </div>
-          </div>
         </div>
-        <div class="col d-flex justify-content-center">
+        <div class="col d-flex justify-content-left">
           <div class="row">
-            <h1 class="mainHeading">Did U Like U to Add Photos ?</h1>
+            <h3 class="headingForAnArticle">Media</h3>
             <div class="col-6">
               <div>
-                <input class="input-group" type="file" ref="file" multiple="multiple" />
+                <input
+                  class="input-group"
+                  type="file"
+                  ref="file"
+                  multiple="multiple"
+                />
 
-                <div v-for="(im, index) in files" :key="im">
-                  <div class="card-body">
-                    <h4>FileName:-{{ im.name }}</h4>
-                    <button
-                      class="btn btn-outline-primary"
-                      @click="deleteColumn(index)"
-                    >
-                      Delete Items
-                    </button>
-                  </div>
+                <div v-for="im in files" :key="im">
+                  <div><b>{{ im.name }}</b></div>
                 </div>
               </div>
             </div>
             <div class="col-6">
-              <button @click="submitFiles()" class="btn btn-primary">Add</button>
+              <button @click="submitFiles()" class="btn btn-primary">
+                Add
+              </button>
             </div>
           </div>
         </div>
 
         <br />
-        <h1 class="headingForAnArticle">ArticleText</h1>
+        <h3 class="headingForAnArticle">Text</h3>
         <div class="editArticleTextCard">
-          <textarea class="textarea" name="bio" v-model="value.ArticleText">
+          <textarea class="textarea" v-model="value.ArticleText">
           </textarea>
         </div>
 
@@ -77,6 +72,15 @@
 <script>
 import router from "../router";
 export default {
+  readAsDataUrl(file) {
+    let fr = new FileReader();
+    if (fr.readAsDataURL) {
+      fr.readAsDataURL(file);
+    } else if (fr.readAsDataurl) {
+      fr.readAsDataurl(file);
+    }
+    return fr.result;
+  },
   created() {
     this.$getLocation({}).then((coordinates) => {
       this.coordinates = coordinates;
@@ -90,10 +94,10 @@ export default {
       data: [
         {
           image: "",
-          title: "Samsung",
-          Location: "Banglore",
+          title: "Monkeys Attack",
+          Location: "Telangana, India",
           ArticleText:
-            "At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.",
+            "Many tourists visit the famous Badrachalam temple in Telangana duirng the festival season. However, the monkeys at the temple have become a constant nuisance to the tourists. One family who visited the temple in the recent days met with an angry monkey which did not let them pass as they were walking back to their guest room situated in the temple premises.",
         },
       ],
     };
@@ -129,7 +133,7 @@ export default {
   color: black;
   margin-top: 30px;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
 }
 .mainHeading {
   margin-top: 5px;
@@ -175,22 +179,13 @@ export default {
   -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.editArticleTextCard {
-  margin-top: 5px;
-  height: 450px;
-  width: 100%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+
 .textarea {
-  height: 449px;
+  height: 200px;
   width: 100%;
 }
 .card-body {
-   border: 3px solid red;
+  border: 3px solid red;
   border-radius: 15px;
   display: inline-block;
   margin-bottom: 30px;
