@@ -125,7 +125,7 @@ export default {
       ) {
         const date = new Date();
         axios
-          .post("https://localhost:44369/user", {
+          .post(" http://ipn.azurewebsites.net/user", {
             firstName: this.formData.firstName,
             middleName: this.formData.middleName,
             lastName: this.formData.lastName,

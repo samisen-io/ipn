@@ -58,7 +58,7 @@ public class UserController : ControllerBase
  
     var id = await _userDBService.Insert(dto);
     if (id != default)
-      return CreatedAtRoute("FindOne", new { id = id }, dto);
+      return CreatedAtRoute("FindUser", new { id = id }, dto);
     else
       return BadRequest();
   }
