@@ -38,7 +38,7 @@
             </div>
 
             <div class="Login">
-              <button class="btn btn-primary" @click="login()">Login</button>
+              <button class="btn btn-primary" @click="userProfilePage()">Login</button>
             </div>
           </form>
         </div>
@@ -76,6 +76,12 @@ export default {
       });
   },
   methods: {
+    userProfilePage() {
+      this.$router.replace({
+        name: "UserProfile",
+        params: { id: this.$route.params.id },
+      });
+    },
     login() {
       if (this.input.email != "" && this.input.password != "") {
         axios
@@ -136,6 +142,4 @@ export default {
 .form_container {
   margin-top: 100px;
 }
-
-
 </style>
