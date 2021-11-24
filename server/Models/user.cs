@@ -11,7 +11,6 @@ public class User
     [Required]
     public string lastName { get; set; }
     [Required]
-    [Required]
     public string mobile { get; set; }
     [Required]
     public string email { get; set; }
