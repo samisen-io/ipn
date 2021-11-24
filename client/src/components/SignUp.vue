@@ -138,8 +138,7 @@ export default {
           })
           .then((response) => {
             console.log(response);
-
-            this.$router.replace({ name: "SignIn" });
+            this.$router.replace({ name: "SignInWithID", params:{id:response.data.id}});
           })
           .catch((error) => {
             console.log(error);
