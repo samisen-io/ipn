@@ -6,7 +6,7 @@
     <div class="container">
       <div class="d-flex justify-content-center">
         <div class="alert alert-success" role="alert" id="delayedAlert">
-          Welcome back !!
+          Welcome back !! {{profile.firstName}}
         </div>
       </div>
       <div class="d-flex justify-content-center">
@@ -55,6 +55,7 @@
                           class="form-control"
                           aria-label="Sizing example input"
                           aria-describedby="inputGroup-sizing-default"
+                          v-model="profile.firstName"
                         />
                       </div>
                       <div class="input-group mb-3">
@@ -68,6 +69,7 @@
                           class="form-control"
                           aria-label="Sizing example input"
                           aria-describedby="inputGroup-sizing-default"
+                          v-model="profile.middleName"
                         />
                       </div>
                       <div class="input-group mb-3">
@@ -81,6 +83,7 @@
                           class="form-control"
                           aria-label="Sizing example input"
                           aria-describedby="inputGroup-sizing-default"
+                          v-model="profile.lastName"
                         />
                       </div>
                       <div class="input-group mb-3">
@@ -94,6 +97,7 @@
                           class="form-control"
                           aria-label="Sizing example input"
                           aria-describedby="inputGroup-sizing-default"
+                          v-model="profile.mobile"
                         />
                       </div>
                       <div class="input-group mb-3">
@@ -107,6 +111,7 @@
                           class="form-control"
                           aria-label="Sizing example input"
                           aria-describedby="inputGroup-sizing-default"
+                          v-model="profile.email"
                         />
                       </div>
                     </div>
@@ -137,6 +142,7 @@
                 class="form-control"
                 aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default"
+                v-model="profile.firstName"
               />
             </div>
             <div class="input-group mb-3">
@@ -149,6 +155,7 @@
                 class="form-control"
                 aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default"
+                v-model="profile.middleName"
               />
             </div>
             <div class="input-group mb-3">
@@ -161,6 +168,7 @@
                 disabled
                 aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default"
+                v-model="profile.lastName"
               />
             </div>
             <div class="input-group mb-3">
@@ -173,6 +181,7 @@
                 disabled
                 aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default"
+                v-model="profile.mobile"
               />
             </div>
             <div class="input-group mb-3">
@@ -185,6 +194,7 @@
                 class="form-control"
                 aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default"
+                v-model="profile.email"
               />
             </div>
             <div class="input-group mb-3">
@@ -197,6 +207,7 @@
                 class="form-control"
                 aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default"
+                v-model="profile.lastLogin"
               />
             </div>
           </div>
