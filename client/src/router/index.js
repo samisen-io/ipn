@@ -4,7 +4,7 @@ import SignUp from "../components/SignUp.vue"
 import CreateArticles from "../components/CreateArticles.vue"
 import EditArticle from "../components/EditArticle.vue"
 import NewsFeed from "../components/NewsFeed.vue"
-
+import AutomaticSignIn from "../components/AutomaticSignIn.vue"
 const routes = [
     {
         path: "/",
@@ -17,6 +17,11 @@ const routes = [
         name: "SignUp",
         component: SignUp,
 
+    },
+    {
+        path:"/AutomaticSignIn/:id",
+        name:"AutomaticSignIn",
+        component:AutomaticSignIn
     },
     {
         path: "/createarticles",
