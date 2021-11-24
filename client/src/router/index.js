@@ -5,6 +5,7 @@ import CreateArticles from "../components/CreateArticles.vue"
 import EditArticle from "../components/EditArticle.vue"
 import NewsFeed from "../components/NewsFeed.vue"
 import AutomaticSignIn from "../components/AutomaticSignIn.vue"
+import UserProfile from "../components/UserProfile.vue"
 const routes = [
     {
         path: "/",
@@ -28,6 +29,11 @@ const routes = [
         name: "CreateArticles",
         component: CreateArticles,
 
+    },
+    {
+        path:"/userprofile",
+        name:"UserProfile",
+        component:UserProfile
     },
     {
         path: "/editarticle/:ArticleName",
