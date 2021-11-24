@@ -6,12 +6,27 @@
         <div class="ResetPassword">
           <div class="input-group mb-3">
             <span class="input-group-text"
+              ><i class="fas fa-envelope fa-2x"></i
+            ></span>
+            <input
+              type="email"
+              class="form-control"
+              disabled
+              placeholder="Email"
+              aria-label="Location"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text"
               ><i class="fas fa-key fa-2x"></i
             ></span>
             <input
               v-bind:type="[showPassword ? 'text' : 'password']"
               class="form-control"
               placeholder="Password"
+              v-model="input.password"
             />
 
             <span
@@ -33,6 +48,7 @@
               v-bind:type="[showPasswordConfirm ? 'text' : 'password']"
               class="form-control"
               placeholder="ConfirmPassword"
+              v-model="input.confirmPassword"
             />
 
             <span
@@ -47,7 +63,13 @@
             </span>
           </div>
           <div class="submitbutton">
-            <button type="button" class="btn btn-primary">Reset</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="ResetPassword()"
+            >
+              Reset
+            </button>
           </div>
         </div>
       </div>
@@ -61,7 +83,25 @@ export default {
     return {
       showPassword: false,
       showPasswordConfirm: false,
+      input: {
+        password: "",
+        confirmPassword: "",
+      },
     };
+  },
+  methods: {
+    ResetPassword() {
+      console.log(this.input.password);
+      console.log(this.input.confirmPassword);
+      if ((this.input.password = this.input.confirmPassword)) {
+        alert("Passwords Matched");
+        this.input = {};
+      } else if (this.input.password != this.input.confirmPassword) {
+        alert("password not matched");
+      } else {
+        alert("Enter Password and confirm Password");
+      }
+    },
   },
 };
 </script>
@@ -69,7 +109,7 @@ export default {
 <style>
 .ResetPassword {
   margin-top: 100px;
-  height: 200px;
+  height: 250px;
   width: 40%;
   position: relative;
   display: flex;
