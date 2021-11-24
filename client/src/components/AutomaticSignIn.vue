@@ -44,9 +44,7 @@
         </div>
 
         <div class="mt-4">
-          <div class="d-flex justify-content-center">
-            Don't have an account? <a href="/SignUp" class="ml-2">Sign Up</a>
-          </div>
+       
           <div class="Forgotpassword">
             <a href="#">Forgot your password?</a>
           </div>
