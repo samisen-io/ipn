@@ -139,13 +139,13 @@ export default {
           .then((response) => {
             console.log(response);
 
-            this.$router.replace({ name: "SignIn" });
+            // this.$router.replace({ name: "SignIn" });
           })
           .catch((error) => {
             console.log(error);
           });
         this.formData = {};
-        this.$router.replace({ name: "SignIn" });
+       
       } else {
         alert("Enter the Items");
       }
