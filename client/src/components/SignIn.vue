@@ -129,8 +129,5 @@ export default {
   margin-top: 100px;
 }
 
-.input-group-text {
-  background: #c0392b !important;
-  color: white !important;
-}
+
 </style>

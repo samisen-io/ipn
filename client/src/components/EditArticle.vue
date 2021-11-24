@@ -189,18 +189,5 @@ export default {
   height: 449px;
   width: 100%;
 }
-.card-body {
-   border: 3px solid red;
-  border-radius: 15px;
-  display: inline-block;
-  margin-bottom: 30px;
-  margin-top: 30px;
-  height: 300px;
-  width: 50%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+
 </style>

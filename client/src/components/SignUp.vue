@@ -189,8 +189,5 @@ export default {
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
 }
-.input-group-text {
-  background: #c0392b !important;
-  color: white !important;
-}
+
 </style>
