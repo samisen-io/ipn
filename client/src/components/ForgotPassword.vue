@@ -6,7 +6,7 @@
         <div class="forgotPassword">
           <div class="input-group mb-3">
             <span class="input-group-text"
-              ><i class="fas fa-user fa-2x"></i
+              ><i class="fas fa-envelope fa-2x"></i
             ></span>
             <input
               type="email"
