@@ -44,7 +44,6 @@
         </div>
 
         <div class="mt-4">
-       
           <div class="Forgotpassword">
             <a href="#">Forgot your password?</a>
           </div>
@@ -72,7 +71,7 @@ export default {
     axios
       .get("http://ipn.azurewebsites.net/user/" + this.id)
       .then((response) => {
-          this.input = response.data
+        this.input = response.data;
         console.log(response);
       });
   },
