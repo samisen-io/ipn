@@ -9,24 +9,42 @@
               ><i class="fas fa-key fa-2x"></i
             ></span>
             <input
-              type="password"
+              v-bind:type="[showPassword ? 'text' : 'password']"
               class="form-control"
-              placeholder="password"
-              aria-label="Location"
-              aria-describedby="basic-addon1"
+              placeholder="Password"
             />
+
+            <span
+              class="input-group-text"
+              @click="showPassword = !showPassword"
+            >
+              <i
+                class="fa"
+                :class="[showPassword ? 'fa-eye' : 'fa-eye-slash']"
+                aria-hidden="true"
+              ></i>
+            </span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text"
               ><i class="fas fa-key fa-2x"></i
             ></span>
             <input
-              type="password"
+              v-bind:type="[showPasswordConfirm ? 'text' : 'password']"
               class="form-control"
-              placeholder="password"
-              aria-label="Location"
-              aria-describedby="basic-addon1"
+              placeholder="ConfirmPassword"
             />
+
+            <span
+              class="input-group-text"
+              @click="showPasswordConfirm = !showPasswordConfirm"
+            >
+              <i
+                class="fa"
+                :class="[showPasswordConfirm ? 'fa-eye' : 'fa-eye-slash']"
+                aria-hidden="true"
+              ></i>
+            </span>
           </div>
           <div class="submitbutton">
             <button type="button" class="btn btn-primary">Reset</button>
@@ -38,14 +56,21 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      showPassword: false,
+      showPasswordConfirm: false,
+    };
+  },
+};
 </script>
 
 <style>
 .ResetPassword {
   margin-top: 100px;
   height: 200px;
-  width: 50%;
+  width: 40%;
   position: relative;
   display: flex;
   justify-content: center;
