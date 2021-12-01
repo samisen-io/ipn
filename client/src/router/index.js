@@ -8,6 +8,7 @@ import CreateArticles from "../components/CreateArticles.vue"
 import EditArticle from "../components/EditArticle.vue"
 import NewsFeed from "../components/NewsFeed.vue"
 import UserProfile from "../components/UserProfile.vue"
+import ArticlesList from "../components/ArticlesList.vue"
 const routes = [
     {
         path: "/",
@@ -24,6 +25,10 @@ const routes = [
         path:"/resetpassword",
         name:"ResetPassword",
         component:ResetPassword
+    },
+    {
+        path:"/ArticlesList",
+        component:ArticlesList
     },
     {
         path: "/signup",
